@@ -3,3 +3,4 @@ dist/
 .vercel/
 .member-cache.json
 *.local
+.vercel
