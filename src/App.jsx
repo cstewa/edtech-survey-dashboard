@@ -83,7 +83,7 @@ export default function App() {
                   return (
                     <div className="hero-stat" style={statStyle(concernsPct)}>
                       <div className="hero-stat-pct">{concernsPct}%</div>
-                      <div className="hero-stat-label">report <strong>concerns</strong> about device use</div>
+                      <div className="hero-stat-label">report <strong>concerns</strong> about how devices are used at school</div>
                     </div>
                   );
                 })()}
