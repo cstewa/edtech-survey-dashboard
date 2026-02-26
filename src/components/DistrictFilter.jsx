@@ -11,7 +11,7 @@ export default function DistrictFilter({ districts, selected, onChange }) {
         onChange={e => onChange(e.target.value || null)}
       >
         <option value="">All districts ({districts.length} districts)</option>
-        {districts.map(d => (
+        {[...districts].sort((a, b) => a.localeCompare(b)).map(d => (
           <option key={d} value={d}>{d}</option>
         ))}
       </select>
