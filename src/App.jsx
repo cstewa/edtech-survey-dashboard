@@ -123,7 +123,7 @@ export default function App() {
 
             <section className="section">
               <h2 className="section-title">Geographic Breakdown</h2>
-              <p className="section-desc">Responses by PA county (public school families only)</p>
+              <p className="section-desc">Responses by PA county</p>
               <CountyMap byCounty={active.byCounty} />
               <CountyTable byCounty={active.byCounty} />
             </section>
