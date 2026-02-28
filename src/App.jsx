@@ -91,7 +91,7 @@ export default function App() {
                 {commsTotal > 0 && (
                   <div className="hero-stat" style={statStyle(pct(commsPoor, commsTotal))}>
                     <div className="hero-stat-pct">{pct(commsPoor, commsTotal)}%</div>
-                    <div className="hero-stat-label">say their school <strong>communicates poorly</strong> about technology policies</div>
+                    <div className="hero-stat-label">say their school <strong>communicates poorly</strong> about screen time & tech use</div>
                   </div>
                 )}
               </div>
