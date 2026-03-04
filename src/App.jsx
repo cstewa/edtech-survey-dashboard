@@ -70,7 +70,7 @@ export default function App() {
                   return (
                     <div className="hero-stat" style={statStyle(tooMuchPct)}>
                       <div className="hero-stat-pct">{tooMuchPct}%</div>
-                      <div className="hero-stat-label">say there's <strong>too much</strong> screen time at school*</div>
+                      <div className="hero-stat-label">say there is <strong>too much</strong> screen time on school-issued devices*</div>
                     </div>
                   );
                 })()}
@@ -83,7 +83,7 @@ export default function App() {
                   return (
                     <div className="hero-stat" style={statStyle(concernsPct)}>
                       <div className="hero-stat-pct">{concernsPct}%</div>
-                      <div className="hero-stat-label">report <strong>concerns</strong> about how devices are used at school</div>
+                      <div className="hero-stat-label">report <strong>concerns</strong> about how school-issued devices are used</div>
                     </div>
                   );
                 })()}
