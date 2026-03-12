@@ -4,7 +4,7 @@ export default function Header() {
       <div className="header-inner">
         <div className="header-main">
           <h1 className="header-title">
-            <span className="header-title-line1">Screen Time &amp; Technology Use</span>
+            <span className="header-title-line1">Screen Time &amp; Technology&nbsp;Use</span>
             <span className="header-title-line2">in Pennsylvania K-12 Schools</span>
           </h1>
           <p className="header-subtitle">Parent/Caregiver Survey Results</p>
