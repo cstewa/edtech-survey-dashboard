@@ -234,14 +234,6 @@ async function main() {
       aggregateRow(bySchoolType[schoolType], row, getCell);
     }
 
-    const detail = getCell(row, 'concernDetails');
-    if (detail) {
-      const truncated = truncateQuote(detail);
-      if (EXCLUDE_QUOTES.some(ex => truncated.includes(ex))) continue;
-      const score = scoreQuote(truncated);
-      if (score > 0) quotePool.push({ text: truncated, county: getCell(row, 'county') || null, score });
-    }
-
     let district = getCell(row, 'district');
     if (!district || district.toLowerCase().includes('other')) {
       district = getCell(row, 'districtOther');
@@ -249,6 +241,14 @@ async function main() {
     if (district) {
       if (!byDistrict[district]) byDistrict[district] = emptyBucket();
       aggregateRow(byDistrict[district], row, getCell);
+    }
+
+    const detail = getCell(row, 'concernDetails');
+    if (detail) {
+      const truncated = truncateQuote(detail);
+      if (EXCLUDE_QUOTES.some(ex => truncated.includes(ex))) continue;
+      const score = scoreQuote(truncated);
+      if (score > 0) quotePool.push({ text: truncated, county: getCell(row, 'county') || null, district: district || null, score });
     }
   }
 
@@ -264,6 +264,14 @@ async function main() {
     if (quotesByCounty[q.county].length < 6) {
       quotesByCounty[q.county].push({ text: q.text, county: q.county });
     }
+  }
+
+  // Top quotes per district (pool already sorted by score descending)
+  const quotesByDistrict = {};
+  for (const q of quotePool) {
+    if (!q.district) continue;
+    if (!quotesByDistrict[q.district]) quotesByDistrict[q.district] = [];
+    quotesByDistrict[q.district].push({ text: q.text, county: q.county });
   }
 
   const commsTotal = Object.values(global.commsRating).reduce((a, b) => a + b, 0);
@@ -284,7 +292,7 @@ async function main() {
     sortedBySchoolType[type] = sortBucket(bucket);
   }
 
-  writeOutput({ ...sortBucket(global), byDistrict: sortedByDistrict, districts, bySchoolType: sortedBySchoolType, featuredQuotes, quotesByCounty });
+  writeOutput({ ...sortBucket(global), byDistrict: sortedByDistrict, districts, bySchoolType: sortedBySchoolType, featuredQuotes, quotesByCounty, quotesByDistrict });
 }
 
 function writeOutput(data) {
@@ -304,6 +312,7 @@ function writeOutput(data) {
     bySchoolType: data.bySchoolType || {},
     featuredQuotes: data.featuredQuotes || [],
     quotesByCounty: data.quotesByCounty || {},
+    quotesByDistrict: data.quotesByDistrict || {},
   };
 
   const outPath = join(ROOT, 'public/data/dashboard.json');

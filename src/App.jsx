@@ -42,9 +42,20 @@ export default function App() {
     ? Object.entries(active.byCounty).sort(([, a], [, b]) => b - a)[0]?.[0]
     : null;
 
-  const activeQuotes = (activeCounty && data?.quotesByCounty?.[activeCounty]?.length > 0)
-    ? data.quotesByCounty[activeCounty]
-    : data?.featuredQuotes;
+  const districtQuotes = selectedDistrict ? data?.quotesByDistrict?.[selectedDistrict] : null;
+  const countyQuotes = activeCounty ? data?.quotesByCounty?.[activeCounty] : null;
+
+  const activeQuotes = (districtQuotes?.length >= 6)
+    ? districtQuotes
+    : (countyQuotes?.length > 0)
+      ? countyQuotes
+      : data?.featuredQuotes;
+
+  const quotesScope = (districtQuotes?.length >= 6)
+    ? selectedDistrict
+    : activeCounty
+      ? `${activeCounty} County`
+      : null;
 
   const commsPoor = (active?.commsRating?.['Very poorly'] || 0) + (active?.commsRating?.['Poorly'] || 0);
   const commsTotal = Object.values(active?.commsRating || {}).reduce((a, b) => a + b, 0);
@@ -175,8 +186,8 @@ export default function App() {
               <section className="section">
                 <h2 className="section-title">Parent Voices</h2>
                 <p className="section-desc">
-                  {activeCounty
-                    ? `In their own words — responses from ${activeCounty} County`
+                  {quotesScope
+                    ? `In their own words — responses from ${quotesScope}`
                     : 'In their own words — responses from across Pennsylvania'}
                 </p>
                 <ParentVoices quotes={activeQuotes} />
