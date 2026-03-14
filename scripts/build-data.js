@@ -47,6 +47,7 @@ const EXCLUDE_QUOTES = [
   'I sometimes find out my child has been onscreen a lot',
   'These devices are not issued by school but they are required',
   'chrome book out at lunch',
+  'Kids are playing videogames, shopping, and exposed to inappropriate content',
 ];
 
 const MAX_QUOTE_LEN = 360;
@@ -255,6 +256,16 @@ async function main() {
   const featuredQuotes = quotePool.slice(0, 8).map(({ text, county }) => ({ text, county }));
   console.log(`Quote pool: ${quotePool.length} scored, using top ${featuredQuotes.length}`);
 
+  // Top 6 quotes per county (pool already sorted by score descending)
+  const quotesByCounty = {};
+  for (const q of quotePool) {
+    if (!q.county) continue;
+    if (!quotesByCounty[q.county]) quotesByCounty[q.county] = [];
+    if (quotesByCounty[q.county].length < 6) {
+      quotesByCounty[q.county].push({ text: q.text, county: q.county });
+    }
+  }
+
   const commsTotal = Object.values(global.commsRating).reduce((a, b) => a + b, 0);
   console.log(`Comms rating responses: ${commsTotal}`, global.commsRating);
   console.log('School types found:', Object.entries(bySchoolType).map(([k, v]) => `${k}: ${v.totalResponses}`).join(', '));
@@ -273,7 +284,7 @@ async function main() {
     sortedBySchoolType[type] = sortBucket(bucket);
   }
 
-  writeOutput({ ...sortBucket(global), byDistrict: sortedByDistrict, districts, bySchoolType: sortedBySchoolType, featuredQuotes });
+  writeOutput({ ...sortBucket(global), byDistrict: sortedByDistrict, districts, bySchoolType: sortedBySchoolType, featuredQuotes, quotesByCounty });
 }
 
 function writeOutput(data) {
@@ -292,6 +303,7 @@ function writeOutput(data) {
     byDistrict: data.byDistrict || {},
     bySchoolType: data.bySchoolType || {},
     featuredQuotes: data.featuredQuotes || [],
+    quotesByCounty: data.quotesByCounty || {},
   };
 
   const outPath = join(ROOT, 'public/data/dashboard.json');

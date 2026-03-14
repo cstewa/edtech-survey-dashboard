@@ -38,6 +38,14 @@ export default function App() {
     ? data.byDistrict[selectedDistrict]
     : data;
 
+  const activeCounty = selectedDistrict && active?.byCounty
+    ? Object.entries(active.byCounty).sort(([, a], [, b]) => b - a)[0]?.[0]
+    : null;
+
+  const activeQuotes = (activeCounty && data?.quotesByCounty?.[activeCounty]?.length > 0)
+    ? data.quotesByCounty[activeCounty]
+    : data?.featuredQuotes;
+
   const commsPoor = (active?.commsRating?.['Very poorly'] || 0) + (active?.commsRating?.['Poorly'] || 0);
   const commsTotal = Object.values(active?.commsRating || {}).reduce((a, b) => a + b, 0);
 
@@ -155,19 +163,23 @@ export default function App() {
               />
             </section>
 
-            {data.featuredQuotes?.length > 0 && (
+            {Object.keys(data.bySchoolType || {}).length >= 2 && (
               <section className="section">
-                <h2 className="section-title">Parent Voices</h2>
-                <p className="section-desc">In their own words — selected responses from the open-ended concerns question</p>
-                <ParentVoices quotes={data.featuredQuotes} />
+                <h2 className="section-title">Public vs. Private vs. Charter</h2>
+                <p className="section-desc">How responses differ by school type</p>
+                <SchoolTypeComparison bySchoolType={data.bySchoolType} />
               </section>
             )}
 
-            {Object.keys(data.bySchoolType || {}).length >= 2 && (
+            {activeQuotes?.length > 0 && (
               <section className="section">
-                <h2 className="section-title">Public vs. Private</h2>
-                <p className="section-desc">How responses differ by school type</p>
-                <SchoolTypeComparison bySchoolType={data.bySchoolType} />
+                <h2 className="section-title">Parent Voices</h2>
+                <p className="section-desc">
+                  {activeCounty
+                    ? `In their own words — responses from ${activeCounty} County`
+                    : 'In their own words — selected responses from the open-ended concerns question'}
+                </p>
+                <ParentVoices quotes={activeQuotes} />
               </section>
             )}
           </>
