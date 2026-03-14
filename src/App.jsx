@@ -177,7 +177,7 @@ export default function App() {
                 <p className="section-desc">
                   {activeCounty
                     ? `In their own words — responses from ${activeCounty} County`
-                    : 'In their own words — selected responses from the open-ended concerns question'}
+                    : 'In their own words — responses from across Pennsylvania'}
                 </p>
                 <ParentVoices quotes={activeQuotes} />
               </section>
