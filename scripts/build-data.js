@@ -48,6 +48,7 @@ const EXCLUDE_QUOTES = [
   'These devices are not issued by school but they are required',
   'chrome book out at lunch',
   'Kids are playing videogames, shopping, and exposed to inappropriate content',
+  'I am looping back to use for Social Studies and Science',
 ];
 
 const MAX_QUOTE_LEN = 360;
