@@ -190,7 +190,7 @@ export default function App() {
                     ? `In their own words — responses from ${quotesScope}`
                     : 'In their own words — responses from across Pennsylvania'}
                 </p>
-                <ParentVoices quotes={activeQuotes} />
+                <ParentVoices quotes={activeQuotes} scoped={!!quotesScope} />
               </section>
             )}
           </>

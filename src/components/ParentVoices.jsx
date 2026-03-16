@@ -1,4 +1,4 @@
-export default function ParentVoices({ quotes }) {
+export default function ParentVoices({ quotes, scoped }) {
   if (!quotes || quotes.length === 0) return null;
 
   return (
@@ -6,7 +6,7 @@ export default function ParentVoices({ quotes }) {
       {quotes.map((q, i) => (
         <blockquote key={i} className="quote-card">
           <p className="quote-text">{'\u201c'}{q.text}{'\u201d'}</p>
-          {q.county && <footer className="quote-attr">{q.county} County</footer>}
+          {q.county && !scoped && <footer className="quote-attr">{q.county} County</footer>}
         </blockquote>
       ))}
     </div>
