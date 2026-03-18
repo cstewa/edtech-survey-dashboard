@@ -30,11 +30,26 @@ body {
 }
 
 /* ── Header ──────────────────────────────────────────────── */
+.home-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--forest);
+  opacity: 0.5;
+  transition: opacity 0.2s;
+  text-decoration: none;
+  position: absolute;
+  top: 1rem;
+  left: 1.5rem;
+}
+.home-link:hover { opacity: 1; }
+
 .site-header {
   background: var(--cream);
   color: var(--forest);
   padding: 2.5rem 1.5rem 1.5rem;
   border-bottom: 2px solid var(--sage);
+  position: relative;
 }
 .header-inner {
   max-width: 1000px;
