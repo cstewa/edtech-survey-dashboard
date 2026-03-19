@@ -176,7 +176,7 @@ export default function App() {
 
             {Object.keys(data.bySchoolType || {}).length >= 2 && (
               <section className="section">
-                <h2 className="section-title">Public vs. Private vs. Charter</h2>
+                <h2 className="section-title">Traditional Public vs. Private/Independent vs. Charter</h2>
                 <p className="section-desc">How responses differ by school type</p>
                 <SchoolTypeComparison bySchoolType={data.bySchoolType} />
               </section>

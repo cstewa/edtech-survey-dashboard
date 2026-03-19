@@ -4,3 +4,4 @@ dist/
 .member-cache.json
 *.local
 .vercel
+.env*.local

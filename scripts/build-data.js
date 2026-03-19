@@ -254,8 +254,22 @@ async function main() {
   }
 
   quotePool.sort((a, b) => b.score - a.score);
-  const featuredQuotes = quotePool.slice(0, 8).map(({ text, county }) => ({ text, county }));
-  console.log(`Quote pool: ${quotePool.length} scored, using top ${featuredQuotes.length}`);
+
+  // Hand-curated statewide featured quotes — ordered by county population (largest first),
+  // one per county, selected for broad relatability and impact.
+  const featuredQuotes = [
+    { text: "My biggest concern is school devices undermining screen time policies at home. My 5th grader exclusively has homework on her Chromebook; it's difficult to police where homework ends and YouTube time begins.", county: 'Philadelphia' },
+    { text: "My daughter spends way too much time on screens at school. Much of her curriculum is screen based. She\u2019s exhausted and unregulated when she gets home.", county: 'Allegheny' },
+    { text: "My daughter was able to access an inappropriate website with a chat feature. When I alerted the school they fixed it and said their protection software had expired and they forgot to renew it\u2026", county: 'Montgomery' },
+    { text: "Despite district filters and automated device usage reports sent to me, my 8th grader spends a huge amount of time playing games, watching YouTube shorts, and checking professional sports statistics while at school. When he comes home, I spend time sitting with him helping him stay on track while he gets his online school work completed.", county: 'Bucks' },
+    { text: "My daughter says teachers don\u2019t teach, they just say \u201cgo to [insert app] on ipad, watch the video and answer the questions.\u201d She says as a result of this, teachers don\u2019t know how to teach the material they\u2019ve been tasked with teaching when kids have a question.", county: 'Delaware' },
+    { text: "Our school district allows YouTube, which is not something our children have access to at home. Our district also uses Aristotle, however it works haphazardly. This past fall, my 12 year old came across and Ai chat site through his school issued Chromebook.", county: 'Lancaster' },
+    { text: "My 6 year old son in kindergarten told me today that \u201cmost of his friends watch YouTube on the school iPad\u201d \n6\u2026 years\u2026 old\u2026 in kindergarten.", county: 'Westmoreland' },
+    { text: "We were not given an option of wanting a device. We are also responsible for any damages that may occur to said device throughout the year. Students also bring device home throughout the summer further undermining our strict no device policy at home.", county: 'Luzerne' },
+    { text: "I genuinely have no idea how much time my daughter is in her iPad every day. The school doesn\u2019t communicate it well. We used to do screens on a regular basis at home but we have stopped because of how much ambiguity there is with her school usage.", county: 'Cumberland' },
+    { text: "My son\u2019s teacher told us that there is no way for the school to block everything inappropriate. As parents, I feel as if the school is undoing a lot of our hard work when it comes to limiting screen time and ensuring we know what they are accessing.", county: 'Lackawanna' },
+  ];
+  console.log(`Quote pool: ${quotePool.length} scored, using ${featuredQuotes.length} hand-curated featured quotes`);
 
   // Top 6 quotes per county (pool already sorted by score descending)
   const quotesByCounty = {};

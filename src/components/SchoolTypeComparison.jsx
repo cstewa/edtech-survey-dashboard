@@ -6,6 +6,10 @@ function pctColor(percentage) {
   return `hsl(${hue}, 58%, ${accentL}%)`;
 }
 
+const displayNames = {
+  'Private/Independent school': 'Private school',
+};
+
 export default function SchoolTypeComparison({ bySchoolType }) {
   const types = Object.entries(bySchoolType)
     .filter(([, d]) => d.totalResponses >= 10)
@@ -23,7 +27,7 @@ export default function SchoolTypeComparison({ bySchoolType }) {
         return (
           <div key={type} className="school-type-card">
             <div className="school-type-header">
-              <h3 className="school-type-name">{type}</h3>
+              <h3 className="school-type-name">{displayNames[type] || type}</h3>
               <span className="school-type-n">n = {d.totalResponses}</span>
             </div>
             <div className="school-type-stats">
