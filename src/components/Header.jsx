@@ -1,9 +1,6 @@
 export default function Header() {
   return (
     <header className="site-header">
-      <a href="https://www.distractionfreeschoolsca.org" target="_blank" rel="noopener noreferrer">
-        <img src="/logo.png" alt="Distraction Free Schools California" className="header-logo" />
-      </a>
       <div className="header-inner">
         <div className="header-main">
           <h1 className="header-title">
