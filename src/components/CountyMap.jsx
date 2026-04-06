@@ -20,7 +20,7 @@ export default function CountyMap({ byCounty }) {
     <div className="county-map-wrap">
       <ComposableMap
         projection="geoMercator"
-        projectionConfig={{ scale: 2800, center: [-119.5, 37.0] }}
+        projectionConfig={{ scale: 2500, center: [-119.27, 37.27] }}
         width={800}
         height={860}
         style={{ width: '100%', height: 'auto', maxHeight: '600px' }}
