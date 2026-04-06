@@ -22,8 +22,8 @@ export default function CountyMap({ byCounty }) {
         projection="geoMercator"
         projectionConfig={{ scale: 2800, center: [-119.5, 37.0] }}
         width={800}
-        height={340}
-        style={{ width: '100%', height: 'auto' }}
+        height={860}
+        style={{ width: '100%', height: 'auto', maxHeight: '600px' }}
       >
         <Geographies geography={GEO_URL}>
           {({ geographies }) =>
