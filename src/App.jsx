@@ -21,11 +21,11 @@ function statStyle(percentage) {
   // Background saturation and darkness increase with percentage so shading is perceptible
   const hue = Math.round(120 - (percentage / 100) * 120);
   const bgSat = Math.round(18 + (percentage / 100) * 38);   // 18% → 56%
-  const bgL   = Math.round(96 - (percentage / 100) * 9);    // 96% → 87%
+  const bgL = Math.round(96 - (percentage / 100) * 9);    // 96% → 87%
   const accentL = Math.round(46 - (percentage / 100) * 8);  // 46% → 38%
   return {
     '--stat-accent': `hsl(${hue}, 58%, ${accentL}%)`,
-    '--stat-bg':     `hsl(${hue}, ${bgSat}%, ${bgL}%)`,
+    '--stat-bg': `hsl(${hue}, ${bgSat}%, ${bgL}%)`,
     '--stat-border': `hsl(${hue}, 30%, 75%)`,
   };
 }
@@ -142,7 +142,7 @@ export default function App() {
 
             <section className="section">
               <h2 className="section-title">Geographic Breakdown</h2>
-              <p className="section-desc">Responses by PA county</p>
+              <p className="section-desc">Responses by CA county</p>
               <CountyMap byCounty={active.byCounty} />
               <CountyTable byCounty={active.byCounty} />
             </section>
