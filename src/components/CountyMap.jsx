@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { ComposableMap, Geographies, Geography } from 'react-simple-maps';
 
-const GEO_URL = '/data/pa-counties.json';
+const GEO_URL = '/data/ca-counties.json';
 
 function getColor(count, maxCount) {
   if (!count || count === 0) return '#e8f5e9';
@@ -20,7 +20,7 @@ export default function CountyMap({ byCounty }) {
     <div className="county-map-wrap">
       <ComposableMap
         projection="geoMercator"
-        projectionConfig={{ scale: 7200, center: [-77.6, 41.0] }}
+        projectionConfig={{ scale: 2800, center: [-119.5, 37.0] }}
         width={800}
         height={340}
         style={{ width: '100%', height: 'auto' }}
