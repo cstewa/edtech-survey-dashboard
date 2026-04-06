@@ -212,7 +212,10 @@ async function main() {
   console.log('Sheet headers:', headers.join(', '));
 
   const colIndex = {};
-  headers.forEach((h, i) => { colIndex[h] = i; });
+  headers.forEach((h, i) => { 
+    const internalField = fieldMap.columns[h.trim()] || h.trim();
+    colIndex[internalField] = i; 
+  });
 
   function getCell(row, colName) {
     const idx = colIndex[colName];
