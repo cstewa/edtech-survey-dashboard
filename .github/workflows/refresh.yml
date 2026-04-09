@@ -2,7 +2,7 @@ name: Nightly Dashboard Refresh
 
 on:
   schedule:
-    - cron: '0 6 * * *'  # 6am UTC daily
+    - cron: '0 */3 * * *'  # every 3 hours
   workflow_dispatch:       # lets you also trigger it manually
 
 jobs:
