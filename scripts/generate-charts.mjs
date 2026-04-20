@@ -144,9 +144,9 @@ function horizontalBarChart({ title, items, labelWidth = 340, barMaxWidth = 280,
 // ─── Grouped bar chart (grade bands) ─────────────────────────────────────────
 
 function gradeBandChart() {
-  const bands = ['K–2', '3–5', '6–8', '9–12'];
+  const bands = ['TK–2', '3–5', '6–8', '9–12'];
   const bandData = {
-    'K–2':  d.byGradeBand['K-2'],
+    'TK–2':  d.byGradeBand['TK-2'],
     '3–5':  d.byGradeBand['3-5'],
     '6–8':  d.byGradeBand['6-8'],
     '9–12': d.byGradeBand['9-12'],
@@ -285,7 +285,7 @@ writeFileSync(join(OUT, 'chart-screen-time-overall.svg'),
     labelWidth: 160,
     barMaxWidth: 380,
     highlightFirst: true,
-    note: `Based on ${sentTotal.toLocaleString()} grade-band responses from ${total.toLocaleString()} respondents. Each parent answered separately for K\u20132, 3\u20135, 6\u20138, and 9\u201312 as applicable. Note: 78% of respondents said \u201ctoo much\u201d in at least one grade band; this chart reflects sentiment across all individual grade-band responses.`,
+    note: `Based on ${sentTotal.toLocaleString()} grade-band responses from ${total.toLocaleString()} respondents. Each parent answered separately for TK\u20132, 3\u20135, 6\u20138, and 9\u201312 as applicable. Note: 78% of respondents said \u201ctoo much\u201d in at least one grade band; this chart reflects sentiment across all individual grade-band responses.`,
   })
 );
 

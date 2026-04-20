@@ -64,7 +64,7 @@ function scoreQuote(text) {
 // ─── Aggregation (mirrors build-data.js) ─────────────────────────────────────
 
 const BAND_FIELDS = [
-  { field: 'deviceTime_K-2', band: 'K-2' },
+  { field: 'deviceTime_TK-2', band: 'TK-2' },
   { field: 'deviceTime_3-5', band: '3-5' },
   { field: 'deviceTime_6-8', band: '6-8' },
   { field: 'deviceTime_9-12', band: '9-12' },
@@ -92,7 +92,7 @@ function emptyBucket() {
     byCounty: {},
     screenTimeSentiment: EMPTY_SENTIMENT(),
     byGradeBand: {
-      'K-2': EMPTY_SENTIMENT(),
+      'TK-2': EMPTY_SENTIMENT(),
       '3-5': EMPTY_SENTIMENT(),
       '6-8': EMPTY_SENTIMENT(),
       '9-12': EMPTY_SENTIMENT(),

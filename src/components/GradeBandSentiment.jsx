@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import SentimentBar from './SentimentBar.jsx';
 
-const BANDS = ['K-2', '3-5', '6-8', '9-12'];
+const BANDS = ['TK-2', '3-5', '6-8', '9-12'];
 const BAND_LABELS = {
-  'K-2': 'Grades K–2',
+  'TK-2': 'Grades TK–2',
   '3-5': 'Grades 3–5',
   '6-8': 'Grades 6–8',
   '9-12': 'Grades 9–12',
